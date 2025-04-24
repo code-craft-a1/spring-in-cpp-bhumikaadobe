@@ -5,7 +5,8 @@
 Stats Statistics::ComputeStatistics(const std::vector<double>& input) {
     if (input.empty())
     {
-        return Statistics::Stats();
+        double notNumber = std::numeric_limits<double>::quiet_NaN();
+        return Statistics::Stats(notNumber,notNumber,notNumber);
     }
     Statistics::Stats stats;
     double sum = std::accumulate(input.begin(), input.end(), 0.0);
