@@ -1,5 +1,18 @@
 #include "stats.h"
+#include <numeric>
+#include <algorithm>
 
-Stats Statistics::ComputeStatistics(const std::vector<___>& ) {
-    //Implement statistics here
+Stats Statistics::ComputeStatistics(const std::vector<double>& input) {
+    Statistics::Stats stats = {};
+    if (input.empty())
+    {
+        return stats;
+     }
+    
+
+    double sum = std::accumulate(input.begin(), input.end(), 0.0);
+    stats.average = sum / input.size();
+    stats.max = *std::max_element(input.begin(), input.end());
+    stats.min = *std::min_element(input.begin(), input.end());
+
 }
